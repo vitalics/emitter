@@ -176,4 +176,9 @@ export class Emitter<
     removeAllListeners<
         Ev extends ReservedOrUserEventNames<ReservedEvents, ListenEvents>
         >(ev?: Ev): this;
+
+    /**
+     * Returns an array listing the events for which the emitter has registered listeners.
+     */
+    eventNames(): string[];
 }

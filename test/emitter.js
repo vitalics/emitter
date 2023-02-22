@@ -227,6 +227,23 @@ describe('Emitter', function(){
       })
     })
   })
+
+  describe('eventNames()', function(){
+    it('should returns an empty array', function(){
+      var emitter = new Emitter;
+      emitter.eventNames().should.eql([]);
+    })
+    it('should returns same event name as registered on function', function(){
+      var emitter = new Emitter;
+      emitter.on('foo', function(){});
+      emitter.eventNames().should.eql(['foo']);
+    })
+    it('should returns same event name as registered on function but starts with $ symbol', function(){
+      var emitter = new Emitter;
+      emitter.on('$foo', function(){});
+      emitter.eventNames().should.eql(['$foo']);
+    })
+  })
 })
 
 describe('Emitter(obj)', function(){

@@ -174,3 +174,21 @@ Emitter.prototype.listeners = function(event){
 Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
+
+/**
+ * Returns an array listing the events for which the emitter has registered listeners. 
+ *
+ * @return {Array<String>}
+ * @api public
+ */
+Emitter.prototype.eventNames = function(){
+  this._callbacks = this._callbacks || {};
+  return Object.keys(this._callbacks).map(function (eventName){
+    if(eventName.startsWith('$')){
+      return eventName.substring(1, eventName.length);
+    }
+    else {
+      return eventName;
+    }
+  });
+}
